@@ -9,6 +9,8 @@ using namespace boost::timer;
 const uint32 MD5IV[] = { 0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476 };
 unsigned load_block(istream& i, uint32 block[]);
 void save_block(ostream& o, const uint32 block[]);
+
+//传的地址，跟引用差不多
 void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[], uint32 msg2block0[], uint32 msg2block1[], bool verbose = false);
 
 int main()
