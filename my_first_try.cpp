@@ -17,6 +17,7 @@ int main()
 {
     seed32_1=uint32(time(NULL));
     seed32_2=0x12345678;
+    //MD5已经定义值
     uint32 IV[4] = { MD5IV[0], MD5IV[1], MD5IV[2], MD5IV[3] };
     //两个消息，每个有两个512bit块
 	//16 * 32 = 512
@@ -31,6 +32,8 @@ int main()
 
     return 0;
 }
+
+//C++ 传数组给一个函数，数组类型自动转换为指针类型，因而传的实际是地址。
 void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[], uint32 msg2block0[], uint32 msg2block1[], bool verbose)
 {
 	if (verbose)

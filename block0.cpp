@@ -58,6 +58,7 @@ void find_block0(uint32 block[], const uint32 IV[])
 	std::vector<uint32> q4mask(1<<4); //1<<4 = 16
 	for (unsigned k = 0; k < q4mask.size(); ++k)
 		q4mask[k] = ((k<<2) ^ (k<<26)) & 0x38000004;  //^ 异或 & 与
+		//0011 1000 0000 0000 0000 0000 0000 0100
 
 	std::vector<uint32> q9q10mask(1<<3);
 	for (unsigned k = 0; k < q9q10mask.size(); ++k)
@@ -73,9 +74,11 @@ void find_block0(uint32 block[], const uint32 IV[])
 		//Q68 , 那么 Q4‘ == Q1 实际上从Q1开始算
 		Q[Qoff + 1] = xrng64();
 		Q[Qoff + 3] = (xrng64() & 0xfe87bc3f) | 0x017841c0;
+		//0000 0001 0111 1000 0100 0001 1100 0000
 		Q[Qoff + 4] = (xrng64() & 0x44000033) | 0x000002c0 | (Q[Qoff + 3] & 0x0287bc00);
 		Q[Qoff + 5] = 0x41ffffc8 | (Q[Qoff + 4] & 0x04000033);
 		Q[Qoff + 6] = 0xb84b82d6;
+		//1011 1000 0100 1011 1000 0010 1101 0110 
 		Q[Qoff + 7] = (xrng64() & 0x68000084) | 0x02401b43;
 		Q[Qoff + 8] = (xrng64() & 0x2b8f6e04) | 0x005090d3 | (~Q[Qoff + 7] & 0x40000000);
 		Q[Qoff + 9] = 0x20040068 | (Q[Qoff + 8] & 0x00020000) | (~Q[Qoff + 8] & 0x40000000);

@@ -64,6 +64,7 @@ inline uint32 xrng64()
 	uint32 t = seed32_1 ^ (seed32_1 << 10);
 	seed32_1 = seed32_2;
 	seed32_2 = (seed32_2^(seed32_2>>10))^(t^(t>>13));
+  //交互返回
 	return seed32_1; //return seed32_2
 }
 
@@ -83,6 +84,8 @@ inline uint32 RR(uint32 x, unsigned int n)
 #define MD5_STEP(f, a, b, c, d, m, ac, rc) ( \
 	a += f(b, c, d) + m + ac, \
 	a = (a<<rc | a>>(32-rc)) + b )  //<<不是循环移位， | 异或操作，结合起来实现循环右移
+
+//define 就是替换
 #define MD5_REVERSE_STEP(t,AC,RC) (	\
 	block[t] = Q[Qoff + t + 1] - Q[Qoff + t], \
 	block[t] = RR(block[t], RC) - FF(Q[Qoff + t], Q[Qoff + t - 1], Q[Qoff + t - 2]) - Q[Qoff + t - 3] - AC )

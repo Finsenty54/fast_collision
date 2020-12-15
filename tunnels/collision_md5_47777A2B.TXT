@@ -1,0 +1,40 @@
+28.03.2006 09:54:26.424
+
+ The first block collision took  : 0.300000 sec
+28.03.2006 09:54:26.754
+
+ Check: The same MD5 hash
+
+ The second block collision took  : 1.500000 sec28.03.2006 09:54:28.366
+
+ The first and the second blocks together took : 1.800000 sec
+ AVERAGE time for the 1st block = 0.300000 sec
+ AVERAGE time for the 2nd block = 1.500000 sec
+ AVERAGE time for the complete collision = 1.800000 sec
+ No. of collisions = 1
+
+ The first block collision took  : 0.300000 sec
+28.03.2006 09:54:28.677
+
+ Check: The same MD5 hash
+
+ The second block collision took  : 0.700000 sec28.03.2006 09:54:29.458
+
+ The first and the second blocks together took : 1.000000 sec
+ AVERAGE time for the 1st block = 0.300000 sec
+ AVERAGE time for the 2nd block = 1.100000 sec
+ AVERAGE time for the complete collision = 1.400000 sec
+ No. of collisions = 2
+
+ The first block collision took  : 2.000000 sec
+28.03.2006 09:54:31.511
+
+ Check: The same MD5 hash
+
+ The second block collision took  : 0.900000 sec28.03.2006 09:54:32.502
+
+ The first and the second blocks together took : 2.900000 sec
+ AVERAGE time for the 1st block = 0.866667 sec
+ AVERAGE time for the 2nd block = 1.033333 sec
+ AVERAGE time for the complete collision = 1.900000 sec
+ No. of collisions = 3

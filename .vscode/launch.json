@@ -14,7 +14,7 @@
             "stopAtEntry": false, //别设置成true,报找不到./csu/../csu/libc-start.c错误
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "externalConsole": false,
             "preLaunchTask": "Build",
             "MIMode": "gdb",
             "setupCommands": [
