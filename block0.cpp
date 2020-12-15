@@ -110,7 +110,7 @@ void find_block0(uint32 block[], const uint32 IV[])
 		// change q17 until conditions are met on q18, q19 and q20
 		unsigned counter = 0;
 		// 失败查找128次
-		while (counter < (1 << 7))
+		while (counter < (1 << 7)) //七个条件
 		{
 			const uint32 q16 = Q[Qoff + 16];
 			uint32 q17 = ((xrng64() & 0x3ffd7ff7) | (q16&0xc0008008)) ^ 0x40000000;

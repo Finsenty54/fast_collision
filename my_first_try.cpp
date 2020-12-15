@@ -42,6 +42,7 @@ void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[],
 
 	uint32 IHV[4] = { IV[0], IV[1], IV[2], IV[3] };
     uint32 IHV_TE[4] = { IV[0], IV[1], IV[2], IV[3] };
+    //计算得到新的IHV
 	md5_compress(IHV, msg1block0);
 
 	if (verbose)
