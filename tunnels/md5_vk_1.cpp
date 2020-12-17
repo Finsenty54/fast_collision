@@ -51,12 +51,13 @@ Copyright: Vlastimil Klima, http://cryptography.hyperlink.cz
   */
 
 #include <stdlib.h>
-#include <conio.h>
+//#include <conio.h>
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include <windows.h>
-#include <basetsd.h>
+//#include <windows.h>
+//#include <basetsd.h>
+#include <boost/timer/timer.hpp>
 
 #include "md5.h"
 
@@ -69,7 +70,7 @@ char out_filename[64];
 unsigned long P_IHV1[4], P_HIHV1[4];
 unsigned long pocet_kolizi;
 FILE *fcb;
-SYSTEMTIME now;
+//SYSTEMTIME now;
 char buffer[2048];
 double cas1 = 0, cas2 = 0, cas3 = 0, cas4 = 0, cas5 = 0;
 
@@ -83,10 +84,10 @@ const unsigned long longmask[33] =
 	 0x00000100, 0x00000200, 0x00000400, 0x00000800, 0x00001000, 0x00002000, 0x00004000, 0x00008000,
 	 0x00010000, 0x00020000, 0x00040000, 0x00080000, 0x00100000, 0x00200000, 0x00400000, 0x00800000,
 	 0x01000000, 0x02000000, 0x04000000, 0x08000000, 0x10000000, 0x20000000, 0x40000000, 0x80000000};
-
+/*
 #define WINDOWSTHREADTIMER
 #ifdef WINDOWSTHREADTIMER
-FILETIME cre, ex, krn, usr, usr2;
+//FILETIME cre, ex, krn, usr, usr2;
 
 void StartTimer()
 {
@@ -132,7 +133,7 @@ double StopTimer()
 	return delta;
 }
 #endif
-
+*/
 void MD5Test(unsigned char *data, int datalen, unsigned char *output)
 {
 	int i;
@@ -1004,6 +1005,7 @@ int B1()
 	QM1 = IHV0[2] = HIHV0[2] = 0x98badcfe;
 	QM2 = IHV0[3] = HIHV0[3] = 0x10325476;
 
+	/*
 	StartTimer();
 	GetLocalTime(&now);
 	printf("%02d.%02d.%04d %02d:%02d:%02d.%03d\n",
@@ -1014,7 +1016,7 @@ int B1()
 			now.wDay, now.wMonth, now.wYear,
 			now.wHour, now.wMinute, now.wSecond, now.wMilliseconds);
 	fwrite(buffer, 1, strlen(buffer), fcb);
-	fclose(fcb);
+	fclose(fcb);*/
 
 	pocet_kolizi = 0;
 	cas1 = cas2 = cas3 = cas4 = cas5 = 0;
@@ -1702,6 +1704,7 @@ int B1()
 									P_IHV1[i] = IHV1[i];
 									P_HIHV1[i] = HIHV1[i];
 								}
+								/*
 								GetLocalTime(&now);
 								cas1 = StopTimer();
 								printf("%02d.%02d.%04d %02d:%02d:%02d.%03d\n",
@@ -1719,14 +1722,14 @@ int B1()
 								fclose(fcb);
 
 								StartTimer();
-
+								*/
 							opakuj_B2:
 								if (B2() != 0)
-									goto opakuj_B2;
+									goto opakuj_B2; //goto语句，只要B2()不成功，就一直运行
 
-								cas2 = StopTimer();
+								/*cas2 = StopTimer();
 								GetLocalTime(&now);
-
+								*/
 								printf("\n%02d.%02d.%04d %02d:%02d:%02d.%03d",
 									   now.wDay, now.wMonth, now.wYear,
 									   now.wHour, now.wMinute, now.wSecond, now.wMilliseconds);
@@ -1755,7 +1758,7 @@ int B1()
 
 								fclose(fcb);
 
-								StartTimer();
+								//StartTimer();
 
 							} //Q9
 						}	  //Q4
