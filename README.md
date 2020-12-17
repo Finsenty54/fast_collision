@@ -1,4 +1,7 @@
 # fast_collision
+
+参考两位作者的源码
+
 1. Stevens M. Fast Collision Attack on MD5[J]. IACR Cryptol.  ePrint Arch., 2006, 2006: 104.
 
 https://www.win.tue.nl/hashclash/
