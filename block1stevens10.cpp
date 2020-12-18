@@ -22,7 +22,7 @@ version 1.0.0.5-1, April 2006.
 
 Copyright
 =========
-© M. Stevens, 2006. All rights reserved.
+ï¿½ M. Stevens, 2006. All rights reserved.
 
 Disclaimer
 ==========

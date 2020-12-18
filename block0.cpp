@@ -74,7 +74,9 @@ void find_block0(uint32 block[], const uint32 IV[])
 		//Q68 , 那么 Q4‘ == Q1 实际上从Q1开始算
 		Q[Qoff + 1] = xrng64();
 		Q[Qoff + 3] = (xrng64() & 0xfe87bc3f) | 0x017841c0;
-		//0000 0001 0111 1000 0100 0001 1100 0000
+		//1111 1110 1000 0111 1011 1100 0011 1111  为0处的值都改为0，为1处的值都不变
+		//0000 0001 0111 1000 0100 0001 1100 0000  都变为1，其他值不变
+		//满足新的差分路径条件
 		Q[Qoff + 4] = (xrng64() & 0x44000033) | 0x000002c0 | (Q[Qoff + 3] & 0x0287bc00);
 		Q[Qoff + 5] = 0x41ffffc8 | (Q[Qoff + 4] & 0x04000033);
 		Q[Qoff + 6] = 0xb84b82d6;
@@ -242,13 +244,18 @@ void find_block0(uint32 block[], const uint32 IV[])
 				if (0 == (bb & 0x80000000)) continue;
 
 				block[10] = m10;
+				//计算新的m13
 				block[13] = tt13 - q10;
+
+				//其他消息没有在前几轮产生影响，所以没事，不用计算，下一个tunnel还是要改变的
+
 
 				// iterate over possible changes of q9
 				// while keeping intact conditions on q1-q24
 				// this changes m8, m9 and m12 (but not m10!)
 				for (unsigned counter4 = 0; counter4 < (1<<16); ++counter4)
 				{
+					//这里计算出 8，9，12
 					uint32 q9 = Q[Qoff + 9] ^ q9mask[counter4];
 					block[12] = tt12 - FF(Q[Qoff + 12], Q[Qoff + 11], q10) - q9;
 					uint32 m8 = q9 - Q[Qoff + 8];

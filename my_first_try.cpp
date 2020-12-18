@@ -64,26 +64,26 @@ void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[],
     md5_compress(IHV_TE,msg2block0);
     md5_compress(IHV_TE,msg2block1);
 
-    cout<<"\nmsg1block0\n";
+    cout<<"\n\nmsg1block0\n";
     for (size_t i = 0; i < 16; i++)
     {
         cout<<hex<<msg1block0[i]<<' ';
     }
     cout<<endl;
-    cout<<"msg1block1"<<endl;
+    cout<<"\nmsg1block1"<<endl;
     for (size_t i = 0; i < 16; i++)
     {
         cout<<hex<<msg1block1[i]<<' ';
     }
     cout<<endl;
 
-    cout<<"\nmsg2block0\n";
+    cout<<"\n\nmsg2block0\n";
     for (size_t i = 0; i < 16; i++)
     {
         cout<<hex<<msg2block0[i]<<' ';
     }
     cout<<endl;
-    cout<<"msg2block1"<<endl;
+    cout<<"\nmsg2block1"<<endl;
     for (size_t i = 0; i < 16; i++)
     {
         cout<<hex<<msg2block1[i]<<' ';
@@ -91,14 +91,15 @@ void find_collision(const uint32 IV[], uint32 msg1block0[], uint32 msg1block1[],
     cout<<endl;
 
     //验证消息是否碰撞
+    cout<<"\n碰撞hash值： ";
     for (size_t i = 0; i < 4; i++)
     {
-        cout<<IHV[i]<<"  "<<IHV_TE[i]<<endl;
+        cout<<IHV[i];
         if (IHV[i]!=IHV_TE[i])
         {
             cout<<"not success\n";
         }
         
     }
-    
+    cout<<"\n\n时间：\n";
 }
